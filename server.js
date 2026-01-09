@@ -50,10 +50,10 @@ app.post('/deletecar/:id', async(req, res) => {
     try {
         let connection = await mysql.createConnection(dbConfig);
         await connection.execute('DELETE FROM cars WHERE id = ?', [id]);
-        res.status(201).json({message: 'Car of ID'+id+' has been deleted successfully.'});
+        res.status(200).json({message: 'Car of ID'+id+' has been deleted successfully.'});
     } catch (err) {
         console.error(err);
-        res.status(500).json({ message: 'Server error - could not delete'+car_name });
+        res.status(500).json({ message: 'Server error - could not delete car of ID'+id});
     }
 });
 
